@@ -57,11 +57,11 @@
                                 <state key="normal" title="Править">
                                     <color key="titleColor" name="Color_161_22_204"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Dzg-Dw-i2i" kind="presentation" identifier="editHabitButtonPressed" id="h0r-VF-pWm"/>
+                                </connections>
                             </button>
                             <color key="tintColor" name="Color_161_22_204"/>
-                            <connections>
-                                <segue destination="Dzg-Dw-i2i" kind="presentation" identifier="editHabitButtonPressed" id="QBR-bj-zVb"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -504,7 +504,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QBR-bj-zVb"/>
+        <segue reference="h0r-VF-pWm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HabitsTabIcon" width="25" height="23"/>

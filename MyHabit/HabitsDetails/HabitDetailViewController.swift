@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 class HabitDetailViewController: UITableViewController {
 
     let reuseIdentifier = "HabitDetailsTableViewCell"
