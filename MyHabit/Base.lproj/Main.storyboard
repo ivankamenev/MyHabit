@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C2k-mr-thS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Выпить стакан воды-->
+        <scene sceneID="iiC-DR-xtN">
+            <objects>
+                <tableViewController id="mZT-qJ-rE6" customClass="HabitDetailViewController" customModule="MyHabit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DJi-uM-MKK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HabitCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HabitDetailsTableViewCell" rowHeight="44" id="pwZ-Ix-YKW" customClass="HabitDetailsTableViewCell" customModule="MyHabit">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pwZ-Ix-YKW" id="zrS-JS-4xk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вчера" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSs-un-WAs">
+                                            <rect key="frame" x="12" y="11.5" width="49" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rSs-un-WAs" firstAttribute="centerY" secondItem="zrS-JS-4xk" secondAttribute="centerY" id="06U-fY-qKM"/>
+                                        <constraint firstItem="rSs-un-WAs" firstAttribute="leading" secondItem="zrS-JS-4xk" secondAttribute="leading" constant="12" id="rVU-Ex-hXT"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="tintColor" name="Color_161_22_204"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="rSs-un-WAs" id="CfH-iR-xpk"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mZT-qJ-rE6" id="c2j-hr-V7B"/>
+                            <outlet property="delegate" destination="mZT-qJ-rE6" id="QaQ-gR-4AA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Выпить стакан воды" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="GrM-WJ-H1F">
+                        <barButtonItem key="rightBarButtonItem" id="7gs-Vt-3zm">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Ztz-pY-q6D">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Править">
+                                    <color key="titleColor" name="Color_161_22_204"/>
+                                </state>
+                            </button>
+                            <color key="tintColor" name="Color_161_22_204"/>
+                            <connections>
+                                <segue destination="Dzg-Dw-i2i" kind="presentation" identifier="editHabitButtonPressed" id="QBR-bj-zVb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IAj-nd-s26" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2361" y="-934"/>
+        </scene>
+        <!--Habit View Controller-->
+        <scene sceneID="cgt-od-wGe">
+            <objects>
+                <viewController id="Dzg-Dw-i2i" customClass="HabitViewController" customModule="MyHabit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="I81-AZ-9qU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" verticalHuggingPriority="253" translatesAutoresizingMaskIntoConstraints="NO" id="Od6-TP-W07">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem id="1uw-ow-uS9">
+                                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="c8d-OT-oGg">
+                                            <color key="tintColor" name="Color_161_22_204"/>
+                                            <connections>
+                                                <action selector="closeButton:" destination="Dzg-Dw-i2i" id="4q3-EN-dCd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Сохранить" style="done" id="g70-Vp-Bfp">
+                                            <color key="tintColor" name="Color_161_22_204"/>
+                                            <connections>
+                                                <action selector="saveButton:" destination="Dzg-Dw-i2i" id="tqA-uH-mNr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKZ-Ox-RUh">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <subviews>
+                                    <view autoresizesSubviews="NO" contentMode="scaleToFill" restorationIdentifier="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Boa-GN-tJ9">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="752"/>
+                                        <subviews>
+                                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НАЗВАНИЕ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpU-EX-5wJ">
+                                                <rect key="frame" x="16" y="22" width="382" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Бегать по утрам, спать 8 часов и т.п." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kjh-k6-gZc" userLabel="Name Text Field">
+                                                <rect key="frame" x="16" y="53" width="382" height="22"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="ЦВЕТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKp-QL-DsA">
+                                                <rect key="frame" x="16" y="90" width="382" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9W4-kG-V3g" userLabel="Color View">
+                                                <rect key="frame" x="16" y="121" width="30" height="30"/>
+                                                <color key="backgroundColor" name="Color_255_159_79"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="LGs-do-1tE"/>
+                                                    <constraint firstAttribute="width" constant="30" id="Wv7-iA-wNM"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВРЕМЯ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qst-UB-hAw">
+                                                <rect key="frame" x="16" y="166" width="382" height="24"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHU-1i-V4q" userLabel="Time Label">
+                                                <rect key="frame" x="16" y="197" width="124" height="20.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Каждый день в ">
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker autoresizesSubviews="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="xk9-sK-BHd" userLabel="Time Date Picker">
+                                                <rect key="frame" x="16" y="232.5" width="382" height="216"/>
+                                                <locale key="locale" localeIdentifier="ru_RU"/>
+                                                <connections>
+                                                    <action selector="timeDatePickerChanged:" destination="Dzg-Dw-i2i" eventType="valueChanged" id="ELa-n5-el1"/>
+                                                </connections>
+                                            </datePicker>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lr5-fO-05G" userLabel="Delete Habit Button">
+                                                <rect key="frame" x="141" y="714" width="132" height="30"/>
+                                                <state key="normal" title="Удалить привычку">
+                                                    <color key="titleColor" systemColor="systemPinkColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteHabitButtonTap:" destination="Dzg-Dw-i2i" eventType="touchUpInside" id="MbJ-hs-LHF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="yHU-1i-V4q" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="0m1-Zx-h1P"/>
+                                            <constraint firstItem="cKp-QL-DsA" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="1iE-AL-rSO"/>
+                                            <constraint firstItem="Qst-UB-hAw" firstAttribute="top" secondItem="9W4-kG-V3g" secondAttribute="bottom" constant="15" id="5CQ-aK-VfL"/>
+                                            <constraint firstItem="cpU-EX-5wJ" firstAttribute="centerX" secondItem="Boa-GN-tJ9" secondAttribute="centerX" id="DaR-QV-Yde"/>
+                                            <constraint firstItem="xk9-sK-BHd" firstAttribute="trailing" secondItem="Boa-GN-tJ9" secondAttribute="trailing" constant="-16" id="E0A-m5-hUh"/>
+                                            <constraint firstItem="Qst-UB-hAw" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="HXf-Ez-dqE"/>
+                                            <constraint firstItem="yHU-1i-V4q" firstAttribute="top" secondItem="Qst-UB-hAw" secondAttribute="bottom" constant="7" id="IkE-2T-Iin"/>
+                                            <constraint firstItem="9W4-kG-V3g" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="VqB-2P-Bks"/>
+                                            <constraint firstItem="Kjh-k6-gZc" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="XWV-aU-Jme"/>
+                                            <constraint firstAttribute="trailing" secondItem="cKp-QL-DsA" secondAttribute="trailing" constant="16" id="YKY-Ao-NiE"/>
+                                            <constraint firstItem="xk9-sK-BHd" firstAttribute="top" secondItem="yHU-1i-V4q" secondAttribute="bottom" constant="15" id="Ywi-Pu-Yga"/>
+                                            <constraint firstItem="cpU-EX-5wJ" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="bii-5W-RdO"/>
+                                            <constraint firstAttribute="trailing" secondItem="Kjh-k6-gZc" secondAttribute="trailing" constant="16" id="boq-F9-YRt"/>
+                                            <constraint firstItem="cpU-EX-5wJ" firstAttribute="top" secondItem="Boa-GN-tJ9" secondAttribute="top" constant="22" id="dZA-4m-fMl"/>
+                                            <constraint firstItem="Kjh-k6-gZc" firstAttribute="top" secondItem="cpU-EX-5wJ" secondAttribute="bottom" constant="7" id="eWB-zG-EzX"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qst-UB-hAw" secondAttribute="trailing" constant="16" id="oEH-Vy-2Sv"/>
+                                            <constraint firstItem="9W4-kG-V3g" firstAttribute="top" secondItem="cKp-QL-DsA" secondAttribute="bottom" constant="7" id="r1I-kJ-cuY"/>
+                                            <constraint firstAttribute="bottom" secondItem="lr5-fO-05G" secondAttribute="bottom" constant="8" id="vwW-pZ-3fO"/>
+                                            <constraint firstItem="cKp-QL-DsA" firstAttribute="top" secondItem="Kjh-k6-gZc" secondAttribute="bottom" constant="15" id="wXX-gb-Dsi"/>
+                                            <constraint firstItem="xk9-sK-BHd" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="x1k-ji-JWn"/>
+                                            <constraint firstItem="lr5-fO-05G" firstAttribute="centerX" secondItem="Boa-GN-tJ9" secondAttribute="centerX" id="zXK-U8-eK0"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="1bC-bg-TN4"/>
+                                <constraints>
+                                    <constraint firstItem="Boa-GN-tJ9" firstAttribute="bottom" secondItem="KZb-Zp-fdd" secondAttribute="bottom" id="0Fk-O9-bTt"/>
+                                    <constraint firstItem="Boa-GN-tJ9" firstAttribute="height" secondItem="iUg-v9-8F7" secondAttribute="height" id="ANZ-H7-8QG"/>
+                                    <constraint firstItem="Boa-GN-tJ9" firstAttribute="top" secondItem="KZb-Zp-fdd" secondAttribute="top" id="Ohj-gR-JOm"/>
+                                    <constraint firstItem="Boa-GN-tJ9" firstAttribute="leading" secondItem="KZb-Zp-fdd" secondAttribute="leading" id="U3a-NX-I6w"/>
+                                    <constraint firstItem="Boa-GN-tJ9" firstAttribute="trailing" secondItem="KZb-Zp-fdd" secondAttribute="trailing" id="k7J-8e-Sp1"/>
+                                    <constraint firstItem="Boa-GN-tJ9" firstAttribute="width" secondItem="iUg-v9-8F7" secondAttribute="width" id="r5Y-gR-rkI"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="KZb-Zp-fdd"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="iUg-v9-8F7"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UN4-Vf-WWc"/>
+                        <color key="backgroundColor" name="Color_242_242_247"/>
+                        <constraints>
+                            <constraint firstItem="rKZ-Ox-RUh" firstAttribute="bottom" secondItem="UN4-Vf-WWc" secondAttribute="bottom" id="1FX-to-QIQ"/>
+                            <constraint firstItem="UN4-Vf-WWc" firstAttribute="trailing" secondItem="Od6-TP-W07" secondAttribute="trailing" id="30p-Qr-hpL"/>
+                            <constraint firstItem="rKZ-Ox-RUh" firstAttribute="leading" secondItem="UN4-Vf-WWc" secondAttribute="leading" id="MyO-O5-hWb"/>
+                            <constraint firstItem="Od6-TP-W07" firstAttribute="top" secondItem="UN4-Vf-WWc" secondAttribute="top" id="ZbD-Xh-a3A"/>
+                            <constraint firstItem="UN4-Vf-WWc" firstAttribute="trailing" secondItem="rKZ-Ox-RUh" secondAttribute="trailing" id="edr-RI-ZCv"/>
+                            <constraint firstItem="rKZ-Ox-RUh" firstAttribute="top" secondItem="Od6-TP-W07" secondAttribute="bottom" id="fZM-LZ-Crh"/>
+                            <constraint firstItem="Od6-TP-W07" firstAttribute="leading" secondItem="UN4-Vf-WWc" secondAttribute="leading" id="xGe-Ju-q1S"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="W7o-CB-0nc"/>
+                    <connections>
+                        <outlet property="colorView" destination="9W4-kG-V3g" id="ta3-Jd-CpB"/>
+                        <outlet property="contentView" destination="Boa-GN-tJ9" id="N1h-Ye-GeC"/>
+                        <outlet property="deleteHabitButton" destination="lr5-fO-05G" id="M44-yL-s46"/>
+                        <outlet property="nameTextField" destination="Kjh-k6-gZc" id="o3a-k6-Moa"/>
+                        <outlet property="navItem" destination="1uw-ow-uS9" id="L4R-Z4-baM"/>
+                        <outlet property="scrollView" destination="rKZ-Ox-RUh" id="AoO-bO-psT"/>
+                        <outlet property="timeDatePicker" destination="xk9-sK-BHd" id="UKM-Ei-DZd"/>
+                        <outlet property="timeLabel" destination="yHU-1i-V4q" id="zgY-vp-cPf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ush-ZY-N7h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3342" y="-395"/>
+        </scene>
+        <!--Информация-->
+        <scene sceneID="5gt-OK-wTT">
+            <objects>
+                <navigationController id="0Ol-Hc-Bki" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Информация" image="info.circle.fill" catalog="system" id="Ssc-oE-bY7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GKE-Nt-ZBs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xBM-ds-Q0z" kind="relationship" relationship="rootViewController" id="vAN-fL-ROr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZy-BS-Tfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="661" y="346"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Zuu-iz-aSp">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="C2k-mr-thS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="34d-C6-kqK">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="Color_161_22_204"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dN0-41-qTu" kind="relationship" relationship="viewControllers" id="SQ5-KJ-MyB"/>
+                        <segue destination="0Ol-Hc-Bki" kind="relationship" relationship="viewControllers" id="4OW-kA-oi6"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6QA-6y-GY5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-307" y="-10"/>
+        </scene>
+        <!--Привычки-->
+        <scene sceneID="NeK-BC-RsY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dN0-41-qTu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Привычки" image="HabitsTabIcon" id="tU0-Dc-94D"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="tUV-ON-dpn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5Dw-6l-wci" kind="relationship" relationship="rootViewController" id="4Cc-eN-bp6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="akx-fr-f9N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="689.85507246376812" y="-336.16071428571428"/>
+        </scene>
+        <!--Сегодня-->
+        <scene sceneID="C3w-Sr-UUb">
+            <objects>
+                <collectionViewController id="5Dw-6l-wci" customClass="HabitsViewController" customModule="MyHabit" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="0l3-99-f4L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="Color_242_242_247"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="43Z-k9-5Kz">
+                            <size key="itemSize" width="388" height="84"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="progressCollectionViewCell" id="ScY-co-Zvu" customClass="ProgressCollectionViewCell" customModule="MyHabits" customModuleProvider="target">
+                                <rect key="frame" x="13" y="0.0" width="388" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="A9U-PX-C0m">
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="84"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <progressView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hr0-C9-Ah9">
+                                            <rect key="frame" x="12" y="36" width="364" height="7"/>
+                                            <color key="tintColor" name="Color_161_22_204"/>
+                                            <accessibility key="accessibilityConfiguration" label="Всё получится!">
+                                                <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="7" id="02f-3f-OJm"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </progressView>
+                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Всё получится!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85E-aj-L6c">
+                                            <rect key="frame" x="12" y="10" width="96.5" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByX-eo-hyb">
+                                            <rect key="frame" x="347" y="10" width="29" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="85E-aj-L6c" firstAttribute="top" secondItem="A9U-PX-C0m" secondAttribute="top" constant="10" id="41T-Df-VGd"/>
+                                        <constraint firstAttribute="trailing" secondItem="ByX-eo-hyb" secondAttribute="trailing" constant="12" id="9fo-FM-Z2c"/>
+                                        <constraint firstItem="85E-aj-L6c" firstAttribute="leading" secondItem="A9U-PX-C0m" secondAttribute="leading" constant="12" id="TAY-xw-f1b"/>
+                                        <constraint firstItem="Hr0-C9-Ah9" firstAttribute="top" secondItem="85E-aj-L6c" secondAttribute="bottom" constant="10" id="VWT-2s-mLw"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hr0-C9-Ah9" secondAttribute="trailing" constant="12" id="c6y-NT-O0o"/>
+                                        <constraint firstItem="Hr0-C9-Ah9" firstAttribute="leading" secondItem="A9U-PX-C0m" secondAttribute="leading" constant="12" id="sbv-Wh-O08"/>
+                                        <constraint firstItem="ByX-eo-hyb" firstAttribute="top" secondItem="A9U-PX-C0m" secondAttribute="top" constant="10" id="sh4-sy-5Uz"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layout.cornerRadius">
+                                            <integer key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="388" height="84"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="progressLabel" destination="ByX-eo-hyb" id="qSi-cp-ZlL"/>
+                                    <outlet property="progressView" destination="Hr0-C9-Ah9" id="eBY-Jq-g8x"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="habitCollectionViewCell" id="1DT-rq-jLk" customClass="HabitCollectionViewCell" customModule="MyHabits" customModuleProvider="target">
+                                <rect key="frame" x="13" y="94" width="388" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1rw-VK-L9m">
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="130"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выпить стакан воды" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jH8-KE-RMu">
+                                            <rect key="frame" x="20" y="20" width="169.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" name="Color_41_109_255"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Каждый день в 7:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZv-tH-f9g">
+                                            <rect key="frame" x="20" y="44.5" width="117" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" systemColor="systemGray2Color"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подряд: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yJ-1S-fDQ">
+                                            <rect key="frame" x="20" y="94" width="63.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleAspectFit" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ok-0i-Xyd">
+                                            <rect key="frame" x="326" y="47.5" width="36" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="8Km-NK-8Hb"/>
+                                                <constraint firstAttribute="height" constant="36" id="G1O-Fz-NVf"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="regular"/>
+                                            </state>
+                                            <state key="selected" backgroundImage="checkmark.circle.fill" catalog="system"/>
+                                            <connections>
+                                                <action selector="didItButtonTouched:" destination="1DT-rq-jLk" eventType="touchUpInside" id="s7o-uw-VbL"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="2yJ-1S-fDQ" firstAttribute="leading" secondItem="1rw-VK-L9m" secondAttribute="leading" constant="20" id="0j3-Vg-KHx"/>
+                                        <constraint firstItem="eZv-tH-f9g" firstAttribute="leading" secondItem="1rw-VK-L9m" secondAttribute="leading" constant="20" id="1Cd-wR-Geg"/>
+                                        <constraint firstItem="jH8-KE-RMu" firstAttribute="top" secondItem="1rw-VK-L9m" secondAttribute="top" constant="20" id="6Ed-dh-kcA"/>
+                                        <constraint firstItem="jH8-KE-RMu" firstAttribute="leading" secondItem="1rw-VK-L9m" secondAttribute="leading" constant="20" id="7Ti-tN-L5v"/>
+                                        <constraint firstAttribute="bottom" secondItem="6ok-0i-Xyd" secondAttribute="bottom" constant="47" id="9W6-Bn-DBx"/>
+                                        <constraint firstAttribute="trailing" secondItem="6ok-0i-Xyd" secondAttribute="trailing" constant="26" id="GjD-9w-GVU"/>
+                                        <constraint firstItem="6ok-0i-Xyd" firstAttribute="top" secondItem="1rw-VK-L9m" secondAttribute="top" constant="47" id="NfG-5p-fTa"/>
+                                        <constraint firstItem="eZv-tH-f9g" firstAttribute="top" secondItem="jH8-KE-RMu" secondAttribute="bottom" constant="4" id="PEw-qx-N2G"/>
+                                        <constraint firstAttribute="bottom" secondItem="2yJ-1S-fDQ" secondAttribute="bottom" constant="20" id="yCj-dp-KWq"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layout.cornerRadius">
+                                            <integer key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="388" height="130"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="didItButton" destination="6ok-0i-Xyd" id="Vbb-56-Iz3"/>
+                                    <outlet property="nameLabel" destination="jH8-KE-RMu" id="Ja1-zN-Obo"/>
+                                    <outlet property="repeatedLabel" destination="2yJ-1S-fDQ" id="vNK-5A-fng"/>
+                                    <outlet property="timeLabel" destination="eZv-tH-f9g" id="sL1-pJ-Bi9"/>
+                                    <segue destination="mZT-qJ-rE6" kind="show" identifier="showDates" id="0ME-Ef-Wdb"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="5Dw-6l-wci" id="Xr1-W9-e1A"/>
+                            <outlet property="delegate" destination="5Dw-6l-wci" id="zjH-RE-j1i"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Сегодня" id="LtI-dx-YSr">
+                        <barButtonItem key="backBarButtonItem" title="Сегодня" id="ei7-Ps-yOE"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="d2x-cR-Mgs">
+                            <color key="tintColor" name="Color_161_22_204"/>
+                            <connections>
+                                <segue destination="Dzg-Dw-i2i" kind="presentation" identifier="createHabitButtonPressed" id="XkZ-dG-Eew"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="colView" destination="0l3-99-f4L" id="UNK-dP-Tk0"/>
+                        <outlet property="collectionView" destination="0l3-99-f4L" id="2Du-T8-Bb6"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j9t-KC-dqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1532" y="-336"/>
+        </scene>
+        <!--Информация-->
+        <scene sceneID="REp-pc-1PN">
+            <objects>
+                <viewController id="xBM-ds-Q0z" customClass="InfoViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="z7T-mL-kfg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Привычка за 21 день" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytW-iy-0uF">
+                                <rect key="frame" x="16" y="110" width="382" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LUb-7C-CBZ">
+                                <rect key="frame" x="16" y="150" width="382" height="647"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Прохождение этапов, за которые за 21 день вырабатывается привычка, подчиняется следующему алгоритму:  1. Провести 1 день без обращения к старым привычкам, стараться вести себя так, как будто цель, загаданная на перспективу, находится на расстоянии шага.  2. Выдержать 2 дня в прежнем состоянии самоконтроля.  3. Отметить в дневнике первую неделю изменений и подвести первые итоги — что оказалось тяжело, что — легче, с чем еще предстоит серьёзно бороться.  4. Поздравить себя с прохождением первого серьёзного порога в 21 день. За это время отказ от дурных наклонностей уже примет форму осознанного преодоления и человек сможет больше работать в сторону принятия положительных качеств.  5. Держать планку 40 дней. Практикующий методику уже чувствует себя освободившимся от прошлого негатива и двигается в нужном направлении с хорошей динамикой.  6. На 90 день соблюдения техники всё лишнее из «прошлой жизни» перестаёт напоминать о себе, и человек, оглянувшись назад, осознаёт себя полностью обновившимся.  Источник: psychbook.ru</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OWE-V4-INH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OWE-V4-INH" firstAttribute="bottom" secondItem="LUb-7C-CBZ" secondAttribute="bottom" constant="16" id="02Z-XN-Hvw"/>
+                            <constraint firstItem="LUb-7C-CBZ" firstAttribute="top" secondItem="ytW-iy-0uF" secondAttribute="bottom" constant="16" id="19V-0L-TO4"/>
+                            <constraint firstItem="ytW-iy-0uF" firstAttribute="top" secondItem="OWE-V4-INH" secondAttribute="top" constant="22" id="7l7-mz-muA"/>
+                            <constraint firstItem="LUb-7C-CBZ" firstAttribute="leading" secondItem="OWE-V4-INH" secondAttribute="leading" constant="16" id="9u7-Vv-wrJ"/>
+                            <constraint firstItem="OWE-V4-INH" firstAttribute="trailing" secondItem="ytW-iy-0uF" secondAttribute="trailing" constant="16" id="ECm-ur-tPi"/>
+                            <constraint firstItem="ytW-iy-0uF" firstAttribute="leading" secondItem="OWE-V4-INH" secondAttribute="leading" constant="16" id="Jvo-Vv-yBi"/>
+                            <constraint firstItem="OWE-V4-INH" firstAttribute="trailing" secondItem="LUb-7C-CBZ" secondAttribute="trailing" constant="16" id="NbN-do-3Xo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Информация" id="DcZ-OQ-ier"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vZ3-5T-HQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1532" y="346"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="QBR-bj-zVb"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="HabitsTabIcon" width="25" height="23"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="Color_161_22_204">
+            <color red="0.63137254901960782" green="0.086274509803921567" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color_242_242_247">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color_255_159_79">
+            <color red="1" green="0.62352941176470589" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color_41_109_255">
+            <color red="0.16078431372549021" green="0.42745098039215684" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
