@@ -7,14 +7,12 @@
 
 import UIKit
 
-private let progressCellreuseIdentifier = "progressCollectionViewCell"
-
-private let habitCellReuseIdentifier = "habitCollectionViewCell"
-
 class HabitsViewController: UICollectionViewController {
     
-    
     @IBOutlet var colView: UICollectionView!
+    
+    private let progressCellreuseIdentifier = "progressCollectionViewCell"
+    private let habitCellReuseIdentifier = "habitCollectionViewCell"
     
     private var progressCell: ProgressCollectionViewCell?
 
@@ -23,10 +21,6 @@ class HabitsViewController: UICollectionViewController {
 
 
         self.title = "Сегодня"
-        
-        colView.translatesAutoresizingMaskIntoConstraints = false
-        colView.dataSource = self
-        colView.delegate = self
     }
 
     // MARK: - Navigation
@@ -36,13 +30,14 @@ class HabitsViewController: UICollectionViewController {
             let controller = segue.destination as! HabitViewController
     
             controller.state = .create
-            controller.colView = collectionView
+            controller.onDismiss = { [weak self] in
+                self?.colView.reloadData()
+            }
         }
-        else if segue.identifier == "showDates"
-        {
+        
+        if segue.identifier == "showDates" {
             let controller = segue.destination as! HabitDetailViewController
             controller.habit = (sender as! HabitCollectionViewCell).habit
-            controller.colView = collectionView
         }
     }
 
@@ -51,26 +46,34 @@ class HabitsViewController: UICollectionViewController {
 // MARK: UICollectionViewDataSource
 extension HabitsViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (1 + HabitsStore.shared.habits.count)
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return HabitsStore.shared.habits.count
+        default:
+            return 0
+        }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 && indexPath.item == 0 {
+        if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: progressCellreuseIdentifier, for: indexPath) as! ProgressCollectionViewCell
-
             cell.percents = HabitsStore.shared.todayProgress
-            progressCell = cell
+
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: habitCellReuseIdentifier, for: indexPath) as! HabitCollectionViewCell
-
-            cell.progressCell = self.progressCell
-            cell.habit = HabitsStore.shared.habits[indexPath.item - 1]
+            cell.habit = HabitsStore.shared.habits[indexPath.item]
+            
+            cell.onHabitTracked = { [weak self] in
+                self?.colView.reloadData()
+            }
+            
             return cell
         }
     }
@@ -87,7 +90,7 @@ extension HabitsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 && indexPath.item == 0 {
+        if indexPath.section == 0 {
             return CGSize(width: collectionView.bounds.width-2*offset, height: 60)
         } else {
             return CGSize(width: collectionView.bounds.width-2*offset, height: 130)

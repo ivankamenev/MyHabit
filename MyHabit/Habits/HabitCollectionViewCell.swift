@@ -9,15 +9,12 @@ import UIKit
 
 class HabitCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var repeatedLabel: UILabel!
-    @IBOutlet weak var didItButton: UIButton!
+    var onHabitTracked: (() -> Void)?
     
-    public var progressCell: ProgressCollectionViewCell?
-    
-    public var habit: Habit = Habit(name: "Test", date: Date(), color: .orange){
-        didSet(value) {
+    var habit: Habit? {
+        didSet {
+            guard let habit = habit else { return }
+            
             nameLabel.text = habit.name
             nameLabel.textColor = habit.color
             timeLabel.text = habit.dateString
@@ -27,13 +24,20 @@ class HabitCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var repeatedLabel: UILabel!
+    @IBOutlet private weak var didItButton: UIButton!
+    
     @IBAction func didItButtonTouched(_ sender: Any) {
+        guard let habit = habit else { return }
+        
         if !habit.isAlreadyTakenToday {
             didItButton.isSelected = !didItButton.isSelected
             HabitsStore.shared.track(habit)
-            if let progressCell = self.progressCell {
-                progressCell.percents = HabitsStore.shared.todayProgress
-            }
+            
+            onHabitTracked?()
+            
         }
     }
 }

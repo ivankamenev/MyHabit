@@ -9,7 +9,9 @@ import UIKit
 
 class HabitViewController: UIViewController {
 
-
+    var onDismiss: (() -> Void)?
+    let currentTime: Date = Date()
+    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -22,12 +24,10 @@ class HabitViewController: UIViewController {
     private let defaultName: String? = ""
     private let defaultColor: UIColor? = UIColor(named: "Color_161_22_204")
     private let defaultHabitColor: UIColor? = UIColor(named: "Color_255_159_79")
-    public let currentTime: Date = Date()
     
     public var state: State = .create
-    public var habit: Habit? = nil
-    public var colView: UICollectionView? = nil
-    public var navController: UINavigationController? = nil
+    public var habit: Habit?
+
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -54,7 +54,6 @@ class HabitViewController: UIViewController {
             deleteHabitButton.isEnabled = true
         }
 
-        // Keyboard observers
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -69,7 +68,6 @@ class HabitViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        // Убрать Keyboard observers
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -87,9 +85,10 @@ class HabitViewController: UIViewController {
             if let index = HabitsStore.shared.habits.firstIndex(of: habit!) {
                 HabitsStore.shared.habits.remove(at: index)
             }
-            colView!.reloadData()
-            navController!.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
+          
+            self.dismiss(animated: true) { [weak self] in
+                self?.onDismiss?()
+            }
         }
             
         alertController.addAction(cancelAction)
@@ -97,7 +96,6 @@ class HabitViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // Обработчик нажатия Сохранить / Править
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
         switch state {
         case .create:
@@ -116,9 +114,9 @@ class HabitViewController: UIViewController {
             HabitsStore.shared.save()
         }
 
-        colView!.reloadData()
-
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) { [weak self] in
+            self?.onDismiss?()
+        }
     }
     
 
@@ -146,20 +144,17 @@ class HabitViewController: UIViewController {
     
     // MARK: Actions
     @objc private func tapBackground() {
-        // Спрятать клавиатуру
         hideKeyboard()
     }
     
     @objc private func tapColorAction() {
         showUIColorPickerViewController()
     }
-    
-    // Спрятать клавиатуру
+
     func hideKeyboard() {
         view.endEditing(true)
     }
     
-    // Подготовить и показать UIColorPickerViewController
     func showUIColorPickerViewController() {
         let colorPicker = UIColorPickerViewController()
         colorPicker.delegate = self
@@ -171,14 +166,11 @@ class HabitViewController: UIViewController {
 
 extension HabitViewController: UIColorPickerViewControllerDelegate {
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        // Присвоить цвет викуальному элементу
-        // после выбора в UIColorPickerViewController
         colorView.backgroundColor = viewController.selectedColor
     }
 }
 
 extension NSMutableAttributedString{
-    // If no text is send, then the style will be applied to full text
     func setColorForPart(_ textToFind: String?, with color: UIColor) {
 
         let range:NSRange?
@@ -207,7 +199,6 @@ extension UILabel {
 }
 
 extension Date {
-    /// Текстовое представление даты
     public func dateToString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru")
@@ -215,7 +206,6 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    /// Текстовое представление времени.
     public func timeToString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
@@ -223,7 +213,6 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    /// Описание времени выполнения привычки.
     public func timeToHabitString() -> String {
         "Каждый день в " + timeToString()
     }

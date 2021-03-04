@@ -67,7 +67,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAj-nd-s26" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2361" y="-934"/>
+            <point key="canvasLocation" x="2386" y="3"/>
         </scene>
         <!--Habit View Controller-->
         <scene sceneID="cgt-od-wGe">
@@ -188,6 +188,7 @@
                                             <constraint firstAttribute="bottom" secondItem="lr5-fO-05G" secondAttribute="bottom" constant="8" id="vwW-pZ-3fO"/>
                                             <constraint firstItem="cKp-QL-DsA" firstAttribute="top" secondItem="Kjh-k6-gZc" secondAttribute="bottom" constant="15" id="wXX-gb-Dsi"/>
                                             <constraint firstItem="xk9-sK-BHd" firstAttribute="leading" secondItem="Boa-GN-tJ9" secondAttribute="leading" constant="16" id="x1k-ji-JWn"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yHU-1i-V4q" secondAttribute="trailing" constant="20" symbolic="YES" id="yK5-x3-cBj"/>
                                             <constraint firstItem="lr5-fO-05G" firstAttribute="centerX" secondItem="Boa-GN-tJ9" secondAttribute="centerX" id="zXK-U8-eK0"/>
                                         </constraints>
                                     </view>
@@ -231,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ush-ZY-N7h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3342" y="-395"/>
+            <point key="canvasLocation" x="3186" y="-336"/>
         </scene>
         <!--Информация-->
         <scene sceneID="5gt-OK-wTT">
@@ -256,6 +257,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="C2k-mr-thS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="34d-C6-kqK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" name="Color_161_22_204"/>
@@ -303,7 +305,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="progressCollectionViewCell" id="ScY-co-Zvu" customClass="ProgressCollectionViewCell" customModule="MyHabits" customModuleProvider="target">
+                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="progressCollectionViewCell" id="ScY-co-Zvu" customClass="ProgressCollectionViewCell" customModule="MyHabit" customModuleProvider="target">
                                 <rect key="frame" x="13" y="0.0" width="388" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="A9U-PX-C0m">
@@ -345,6 +347,7 @@
                                         <constraint firstItem="85E-aj-L6c" firstAttribute="leading" secondItem="A9U-PX-C0m" secondAttribute="leading" constant="12" id="TAY-xw-f1b"/>
                                         <constraint firstItem="Hr0-C9-Ah9" firstAttribute="top" secondItem="85E-aj-L6c" secondAttribute="bottom" constant="10" id="VWT-2s-mLw"/>
                                         <constraint firstAttribute="trailing" secondItem="Hr0-C9-Ah9" secondAttribute="trailing" constant="12" id="c6y-NT-O0o"/>
+                                        <constraint firstItem="ByX-eo-hyb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="85E-aj-L6c" secondAttribute="trailing" constant="8" symbolic="YES" id="jH5-iy-jli"/>
                                         <constraint firstItem="Hr0-C9-Ah9" firstAttribute="leading" secondItem="A9U-PX-C0m" secondAttribute="leading" constant="12" id="sbv-Wh-O08"/>
                                         <constraint firstItem="ByX-eo-hyb" firstAttribute="top" secondItem="A9U-PX-C0m" secondAttribute="top" constant="10" id="sh4-sy-5Uz"/>
                                     </constraints>
@@ -365,7 +368,7 @@
                                     <outlet property="progressView" destination="Hr0-C9-Ah9" id="eBY-Jq-g8x"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="habitCollectionViewCell" id="1DT-rq-jLk" customClass="HabitCollectionViewCell" customModule="MyHabits" customModuleProvider="target">
+                            <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="habitCollectionViewCell" id="1DT-rq-jLk" customClass="HabitCollectionViewCell" customModule="MyHabit" customModuleProvider="target">
                                 <rect key="frame" x="13" y="94" width="388" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1rw-VK-L9m">
@@ -413,8 +416,10 @@
                                         <constraint firstItem="jH8-KE-RMu" firstAttribute="leading" secondItem="1rw-VK-L9m" secondAttribute="leading" constant="20" id="7Ti-tN-L5v"/>
                                         <constraint firstAttribute="bottom" secondItem="6ok-0i-Xyd" secondAttribute="bottom" constant="47" id="9W6-Bn-DBx"/>
                                         <constraint firstAttribute="trailing" secondItem="6ok-0i-Xyd" secondAttribute="trailing" constant="26" id="GjD-9w-GVU"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jH8-KE-RMu" secondAttribute="trailing" constant="20" symbolic="YES" id="MXf-nl-dcM"/>
                                         <constraint firstItem="6ok-0i-Xyd" firstAttribute="top" secondItem="1rw-VK-L9m" secondAttribute="top" constant="47" id="NfG-5p-fTa"/>
                                         <constraint firstItem="eZv-tH-f9g" firstAttribute="top" secondItem="jH8-KE-RMu" secondAttribute="bottom" constant="4" id="PEw-qx-N2G"/>
+                                        <constraint firstItem="6ok-0i-Xyd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eZv-tH-f9g" secondAttribute="trailing" constant="8" symbolic="YES" id="XAm-ZN-eAq"/>
                                         <constraint firstAttribute="bottom" secondItem="2yJ-1S-fDQ" secondAttribute="bottom" constant="20" id="yCj-dp-KWq"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
@@ -464,7 +469,7 @@
         <!--Информация-->
         <scene sceneID="REp-pc-1PN">
             <objects>
-                <viewController id="xBM-ds-Q0z" customClass="InfoViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xBM-ds-Q0z" customClass="InfoViewController" customModule="MyHabit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="z7T-mL-kfg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -504,7 +509,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="h0r-VF-pWm"/>
+        <segue reference="XkZ-dG-Eew"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HabitsTabIcon" width="25" height="23"/>
@@ -513,16 +518,16 @@
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="Color_161_22_204">
-            <color red="0.63137254901960782" green="0.086274509803921567" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63099998235702515" green="0.086000002920627594" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Color_242_242_247">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Color_255_159_79">
-            <color red="1" green="0.62352941176470589" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.62400001287460327" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Color_41_109_255">
-            <color red="0.16078431372549021" green="0.42745098039215684" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.16099999845027924" green="0.42699998617172241" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

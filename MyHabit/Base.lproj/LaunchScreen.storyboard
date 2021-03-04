@@ -49,7 +49,7 @@
     <resources>
         <image name="MainIcon" width="1024" height="1024"/>
         <namedColor name="Color_98_54_255">
-            <color red="0.3843137254901961" green="0.21176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38400000333786011" green="0.21199999749660492" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
