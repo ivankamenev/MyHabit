@@ -38,7 +38,10 @@ class HabitDetailViewController: UITableViewController {
             controller.habit = habit
             
             controller.onDismiss = { [weak self] in
+                if let vc =  self?.navigationController?.viewControllers[0] as? HabitsViewController {
+                    vc.isUpdateNeeded = !vc.isUpdateNeeded
                 self?.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }

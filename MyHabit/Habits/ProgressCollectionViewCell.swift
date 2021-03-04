@@ -13,7 +13,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var progressLabel: UILabel!
     
     public var percents: Float = HabitsStore.shared.todayProgress {
-        didSet(value) {
+        didSet {
             percentsShow()
         }
     }

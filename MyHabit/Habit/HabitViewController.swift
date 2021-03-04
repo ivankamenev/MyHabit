@@ -10,6 +10,7 @@ import UIKit
 class HabitViewController: UIViewController {
 
     var onDismiss: (() -> Void)?
+    var cancelAction: (() -> Void)?
     let currentTime: Date = Date()
     
     @IBOutlet weak var navItem: UINavigationItem!
@@ -48,7 +49,7 @@ class HabitViewController: UIViewController {
             navItem.title = "Создать"
             deleteHabitButton.isEnabled = false
             deleteHabitButton.alpha = 0
-        default:
+        default: 
             navItem.title = "Править"
             deleteHabitButton.alpha = 1
             deleteHabitButton.isEnabled = true
@@ -73,7 +74,10 @@ class HabitViewController: UIViewController {
     }
 
     @IBAction func closeButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) { [weak self] in
+            self?.cancelAction?()
+        }
+        
     }
     
 
@@ -84,10 +88,10 @@ class HabitViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "Удалить", style: .default) { [self] action in
             if let index = HabitsStore.shared.habits.firstIndex(of: habit!) {
                 HabitsStore.shared.habits.remove(at: index)
-            }
-          
-            self.dismiss(animated: true) { [weak self] in
-                self?.onDismiss?()
+                self.dismiss(animated: true) { [weak self] in
+                    self?.onDismiss?()
+                }
+                
             }
         }
             

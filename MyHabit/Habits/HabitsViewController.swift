@@ -9,6 +9,8 @@ import UIKit
 
 class HabitsViewController: UICollectionViewController {
     
+    var isUpdateNeeded: Bool = false { didSet { collectionView.reloadData() } }
+    
     @IBOutlet var colView: UICollectionView!
     
     private let progressCellreuseIdentifier = "progressCollectionViewCell"
