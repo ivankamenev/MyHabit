@@ -10,6 +10,6 @@
 
 - Использование UITableView, UICollectionView и кастомных ячеек.
 
-  <p align="center" width="100%">
-    <img width=" на 75%" src="./Design/promo.png"> 
-  </p>
+<img width="800" alt="MyHabit" src="https://user-images.githubusercontent.com/48853442/111756647-82ca1900-88ab-11eb-9a90-b6a5df0f1af1.png">
+
+
